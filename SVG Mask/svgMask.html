@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <link rel="stylesheet" type="text/css" href="test.css">
+    <title>Document</title>
+</head>
+<body>
+<svg viewBox="0 0 600 300" class="svg-defs">
+
+  <!-- Symbol with text -->
+  <symbol id="s-text">
+    <text text-anchor="middle"
+          x="50%"
+          y="50%"
+          dy=".35em"
+          class="text"
+          >
+      KIN
+    </text>    
+  </symbol>
+
+  <!-- Mask with text -->
+  <mask id="m-text"
+        maskunits="userSpaceOnUse"
+        maskcontentunits="userSpaceOnUse">
+
+    <rect
+          width="100%"
+          height="100%"
+          class="mask__shape">
+    </rect>
+    <use xlink:href="#s-text"
+         class="mask__text"
+         ></use>
+
+  </mask>
+</svg>
+
+<div class="box-with-text">
+
+  <!-- Container for video -->
+  <div class="text-fill">
+    <video 
+           class="video" src="severe.mp4"
+           autoplay loop muted
+           ></video>
+  </div>
+
+  <!-- Visible SVG -->
+  <svg viewBox="0 0 600 300"
+       class="svg-inverted-mask">
+    <rect
+          width="100%"
+          height="100%"
+          mask="url(#m-text)"
+          class="shape--fill"/>
+    <use xlink:href="#s-text"
+         class="text--transparent"
+         ></use>
+  </svg> 
+</div>
+</body>
+</html>
